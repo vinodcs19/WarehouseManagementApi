@@ -17,6 +17,7 @@ namespace warehouse.Management.System.Api.Controllers
     {
         private readonly IStockService _stockService;
         ILogger<StockController> _logger = null;
+
         public StockController(IStockService stockService, ILogger<StockController> logger)
         {
             _stockService = stockService ?? throw new ArgumentNullException(nameof(stockService));
@@ -30,7 +31,7 @@ namespace warehouse.Management.System.Api.Controllers
         public async Task<IActionResult> GetStock()
         {
 
-            var stockBalance = await _stockService.GetStockBanlance();
+            var stockBalance = await _stockService.GetTotalStock();
           
 
             _logger.LogInformation("Fetching stock balance");
@@ -42,22 +43,38 @@ namespace warehouse.Management.System.Api.Controllers
         [Route("sell")]
         public async Task<ActionResult<ProductSellRequestDto>> SellStock([FromBody] ProductSellRequestDto sellProduct)
         {
-             await _stockService.SellStock(sellProduct);
+            var result = new ProductSellRequestValidator().Validate(sellProduct);
+            if (result.IsValid)
+            {
+                var response = await _stockService.SellStock(sellProduct);
+                if(response)
+                    return Ok(new { message = "Stock sold sucessfully" });
+
+                return BadRequest(new { message = $"Product not exist to sell with Product ID : {sellProduct.ProductId}." });
+
+            }
+
+            return BadRequest(result.Errors);
 
 
-            _logger.LogInformation("stock sold sucessfully");
-
-            return Ok(new { message = "Stock sold sucessfully" });
         }
 
         [HttpPost]
         [Route("buy")]
         public async Task<ActionResult<ProductBuyRequestDto>> BuyStock([FromBody] ProductBuyRequestDto buyProduct)
         {
-             await _stockService.BuyStock(buyProduct);
+            var result = new ProductBuyRequestValidator().Validate(buyProduct);
+            if (result.IsValid)
+            {
+                var response =  await _stockService.BuyStock(buyProduct);
+                if (response)
+                    return Ok(new { message = $"Product bought sucessfully with Product Name : {buyProduct.ProductName}" });
 
+                return BadRequest(new { message = $"Product not bought with Product Name : {buyProduct.ProductName}." });
 
-            return Ok(new { message = "Stock Bought sucessfully" });
+            }
+
+            return BadRequest(result.Errors);
         }
 
         [HttpGet]

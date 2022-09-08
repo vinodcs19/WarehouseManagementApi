@@ -20,7 +20,7 @@ namespace warehouse.Management.System.Api.DbRepository
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task BuyProduct(Product product)
+        public async Task<int> BuyProduct(Product product)
         {
             if (product == null)
                 throw new ArgumentNullException(nameof(Product));
@@ -28,20 +28,22 @@ namespace warehouse.Management.System.Api.DbRepository
             var existingProduct = _context.Products.Where(x => x.Id == product.Id).SingleOrDefault();
               if (existingProduct != null)
                {
-                  existingProduct.Quantity -= product.Quantity;
-                  existingProduct.Price = product.Quantity * product.Price;
-                  await _context.Products.AddAsync(existingProduct);
+                  existingProduct.Quantity += product.Quantity;
+                  existingProduct.Price += product.Quantity * product.Price;
+                 _context.Products.Update(existingProduct);
+
             }
 
          else { 
 
-                 product.Id = Guid.NewGuid();
+                 product.Id = product.Id ?? Guid.NewGuid();
                  product.Price = product.Quantity * product.Price;
 
                   await _context.Products.AddAsync(product);
               }
 
-             await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync();
+           
 
         }
 
@@ -55,7 +57,7 @@ namespace warehouse.Management.System.Api.DbRepository
 
         }
 
-        public async Task<double> GetTotalStock()
+        public async Task<Int64> GetTotalStock()
         {
 
             var product =  await _context.Products.ToListAsync();
@@ -65,7 +67,7 @@ namespace warehouse.Management.System.Api.DbRepository
             return await Task.FromResult(totalStock);
         }
 
-        public async Task SellProduct(Product product)
+        public async Task<int> SellProduct(Product product)
         {
             if (product == null)
                 throw new ArgumentNullException(nameof(Product));
@@ -76,8 +78,10 @@ namespace warehouse.Management.System.Api.DbRepository
                 existingProduct.Quantity -= product.Quantity;
                 existingProduct.Price -= product.Quantity * product.Price;
                  _context.Products.Update(existingProduct);
-                 await _context.SaveChangesAsync();
+                 var result = await _context.SaveChangesAsync();
+                return result;
             }
+            return 0;
          
 
         }

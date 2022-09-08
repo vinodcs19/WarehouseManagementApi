@@ -30,6 +30,8 @@
     <None Remove="DBContexts\" />
     <None Remove="Migrations\" />
     <None Remove="Microsoft.EntityFrameworkCore.InMemory" />
+    <None Remove="FluentValidation" />
+    <None Remove="Validator\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +50,7 @@
     <PackageReference Include="SQLDependency.DBConnection" Version="1.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.0" />
+    <PackageReference Include="FluentValidation" Version="8.6.2" />
   </ItemGroup>
 
 
@@ -62,5 +65,6 @@
     <Folder Include="DbRepository\" />
     <Folder Include="DBContexts\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Validator\" />
   </ItemGroup>
 </Project>

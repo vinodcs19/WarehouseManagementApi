@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "vlbx623aGnCo+EVYIgk2PL8Uo/ylfW4XAjE4DJ6ZkdOMqbW0MgjyZqe+6g38cZbOxd9MEB+79sihaM9JpFzaKg==",
+  "dgSpecHash": "yEGckdxgyPGPRoFEEH5E4lkI6XVCsCe7fJnMUBGCjo8x4aNIQEpF617pxDdR0Iq9WRStxz/MoXluin0pdv4epw==",
   "success": true,
-  "projectFilePath": "/Users/vinodkumar/Desktop/Project/Warehouse.Management.System.Api/Warehouse.Management.System.Api.csproj",
+  "projectFilePath": "/Users/vinodkumar/Desktop/Project/wmsApi/Warehouse.Management.System.Api/Warehouse.Management.System.Api.csproj",
   "expectedPackageFiles": [
     "/Users/vinodkumar/.nuget/packages/automapper/9.0.0/automapper.9.0.0.nupkg.sha512",
     "/Users/vinodkumar/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/7.0.0/automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
+    "/Users/vinodkumar/.nuget/packages/fluentvalidation/8.6.2/fluentvalidation.8.6.2.nupkg.sha512",
     "/Users/vinodkumar/.nuget/packages/microsoft.aspnetcore.authentication.abstractions/2.0.0/microsoft.aspnetcore.authentication.abstractions.2.0.0.nupkg.sha512",
     "/Users/vinodkumar/.nuget/packages/microsoft.aspnetcore.authentication.core/2.0.0/microsoft.aspnetcore.authentication.core.2.0.0.nupkg.sha512",
     "/Users/vinodkumar/.nuget/packages/microsoft.aspnetcore.authorization/2.0.0/microsoft.aspnetcore.authorization.2.0.0.nupkg.sha512",

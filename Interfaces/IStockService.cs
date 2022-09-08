@@ -8,9 +8,9 @@ namespace warehouse.Management.System.Api.Interfaces
 {
     public interface IStockService
     {
-        public  Task<double> GetStockBanlance();
-        public  Task SellStock(ProductSellRequestDto product);
-        public  Task BuyStock(ProductBuyRequestDto product);
+        public  Task<Int64> GetTotalStock();
+        public  Task<Boolean> SellStock(ProductSellRequestDto product);
+        public  Task<Boolean> BuyStock(ProductBuyRequestDto product);
         public  Task <List<Product>>GetProductList();
 
     }

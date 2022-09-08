@@ -7,9 +7,9 @@ namespace warehouse.Management.System.Api.Interfaces
 {
     public interface IStockRepository
     {
-        public Task BuyProduct(Product product);
-        public Task<double> GetTotalStock();
-        public Task SellProduct(Product product);
+        public Task<int> BuyProduct(Product product);
+        public Task<Int64> GetTotalStock();
+        public Task<int> SellProduct(Product product);
         public Task<List<Product>> GetAllProduct();
     }
 }

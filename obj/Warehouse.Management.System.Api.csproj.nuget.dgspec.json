@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/vinodkumar/Desktop/Project/Warehouse.Management.System.Api/Warehouse.Management.System.Api.csproj": {}
+    "/Users/vinodkumar/Desktop/Project/wmsApi/Warehouse.Management.System.Api/Warehouse.Management.System.Api.csproj": {}
   },
   "projects": {
-    "/Users/vinodkumar/Desktop/Project/Warehouse.Management.System.Api/Warehouse.Management.System.Api.csproj": {
+    "/Users/vinodkumar/Desktop/Project/wmsApi/Warehouse.Management.System.Api/Warehouse.Management.System.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/vinodkumar/Desktop/Project/Warehouse.Management.System.Api/Warehouse.Management.System.Api.csproj",
+        "projectUniqueName": "/Users/vinodkumar/Desktop/Project/wmsApi/Warehouse.Management.System.Api/Warehouse.Management.System.Api.csproj",
         "projectName": "Warehouse.Management.System.Api",
-        "projectPath": "/Users/vinodkumar/Desktop/Project/Warehouse.Management.System.Api/Warehouse.Management.System.Api.csproj",
+        "projectPath": "/Users/vinodkumar/Desktop/Project/wmsApi/Warehouse.Management.System.Api/Warehouse.Management.System.Api.csproj",
         "packagesPath": "/Users/vinodkumar/.nuget/packages/",
-        "outputPath": "/Users/vinodkumar/Desktop/Project/Warehouse.Management.System.Api/obj/",
+        "outputPath": "/Users/vinodkumar/Desktop/Project/wmsApi/Warehouse.Management.System.Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/vinodkumar/.config/NuGet/NuGet.Config"
@@ -45,6 +45,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[8.6.2, )"
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",

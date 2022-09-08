@@ -19,7 +19,7 @@ namespace warehouse.Management.System.Api.Services
             _stockRepository = stockRepository ?? throw new ArgumentNullException(nameof(stockRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
-        public async Task SellStock(ProductSellRequestDto product)
+        public async Task<Boolean> SellStock(ProductSellRequestDto product)
         {
             if (product == null)
                 throw new ArgumentNullException(nameof(ProductSellRequestDto));
@@ -30,16 +30,20 @@ namespace warehouse.Management.System.Api.Services
                 Quantity = product.Quantity,
             };
 
-            await _stockRepository.SellProduct(sellProduct);
+           var result = await _stockRepository.SellProduct(sellProduct);
+
+            return result != 0 ? true : false;
+            
 
         }
 
-        public async Task BuyStock(ProductBuyRequestDto product)
+        public async Task<Boolean> BuyStock(ProductBuyRequestDto product)
         {
             if (product == null)
                 throw new ArgumentNullException(nameof(ProductSellRequestDto));
             var sellProduct = new Product()
             {
+                Id = product.ProductId,
                 Price = product.Price,
                 Quantity = product.Quantity,
                 Code = product.Code,
@@ -47,10 +51,12 @@ namespace warehouse.Management.System.Api.Services
                 Title = product.ProductTitle
             };
 
-            await _stockRepository.BuyProduct(sellProduct);
+           var result = await _stockRepository.BuyProduct(sellProduct);
+            return result != 0 ? true : false;
+
         }
 
-       public async Task<double> GetStockBanlance()
+        public async Task<Int64> GetTotalStock()
         {
              var totalStock = await _stockRepository.GetTotalStock();
             return totalStock;

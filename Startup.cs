@@ -13,8 +13,10 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using warehouse.Management.System.Api.DBContexts;
 using warehouse.Management.System.Api.DbRepository;
+using warehouse.Management.System.Api.Dto.RequestDto;
 using warehouse.Management.System.Api.Interfaces;
 using warehouse.Management.System.Api.Services;
+using Warehouse.Management.System.Api.Validator;
 
 namespace CustomerAPI
 {
@@ -55,6 +57,11 @@ namespace CustomerAPI
             services.AddScoped<IStockRepository, StockRepository>();
 
             services.AddDbContext<StockContext>(options => options.UseInMemoryDatabase(databaseName: "Product"));
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new ValidationFilter());
+            });
 
         }
 
